@@ -21,7 +21,8 @@ defmodule ProblemA do
         raise err
     end
   end
-  def fetch(agent, key) do
+
+  defp fetch(agent, key) do
     Agent.get(agent, fn(state) ->
       try do
         Map.fetch!(state, key)
@@ -29,8 +30,7 @@ defmodule ProblemA do
         exception in [KeyError] ->
           {:error, exception}
       else
-        value ->
-          {:ok, value}
+        {:ok, value} -> value
       end
     end)
   end
