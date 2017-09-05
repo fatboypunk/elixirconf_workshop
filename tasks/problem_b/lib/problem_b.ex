@@ -21,6 +21,6 @@ defmodule ProblemB do
   """
   def stop(pid) do
     # Only change code below
-    send(pid, :stop)
+    Process.exit(pid, :exit)
   end
 end
